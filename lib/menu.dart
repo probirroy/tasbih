@@ -4,7 +4,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({Key key}) : super(key: key);
+  const Menu({required Key key}) : super(key: key);
   final menuButtonTextStyle = const TextStyle(color: Colors.white);
 
   @override
@@ -69,11 +69,11 @@ class Menu extends StatelessWidget {
   }
 
   TextButton buildMenuButton(
-      {@required String name,
-      @required IconData icon,
-      @required Function action}) {
+      {required String name,
+      required IconData icon,
+      required Function action}) {
     return TextButton.icon(
-      onPressed: action,
+      onPressed: action(),
       icon: Icon(
         icon,
         color: Colors.white,

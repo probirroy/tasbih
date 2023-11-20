@@ -7,9 +7,9 @@ class AnimatedFlipCounter extends StatelessWidget {
   final Color color;
 
   const AnimatedFlipCounter({
-    Key key,
-    @required this.value,
-    @required this.duration,
+    required Key key,
+    required this.value,
+    required this.duration,
     this.size = 72,
     this.color = Colors.black,
   }) : super(key: key);
@@ -51,12 +51,12 @@ class _SingleDigitFlipCounter extends StatelessWidget {
   final Color color;
 
   const _SingleDigitFlipCounter({
-    Key key,
-    @required this.value,
-    @required this.duration,
-    @required this.height,
-    @required this.width,
-    @required this.color,
+    required Key key,
+    required this.value,
+    required this.duration,
+    required this.height,
+    required this.width,
+    required this.color,
   }) : super(key: key);
 
   @override
@@ -90,7 +90,7 @@ class _SingleDigitFlipCounter extends StatelessWidget {
     );
   }
 
-  Widget _buildSingleDigit({int digit, double offset, double opacity}) {
+  Widget _buildSingleDigit({required int digit, required double offset, required double opacity}) {
     return Positioned(
       child: SizedBox(
         width: width,

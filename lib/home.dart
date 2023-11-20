@@ -9,7 +9,7 @@ import 'CONSTANTS.dart';
 import 'utils/animated_flip_counter.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({required Key key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -178,10 +178,10 @@ class _HomeState extends State<Home> {
   }
 
   void _loadSettings() async {
-    bool canVibrate = await Vibration.hasVibrator();
+    bool? canVibrate = await Vibration.hasVibrator();
     if (!_isDisposed) {
       setState(() {
-        _canVibrate = canVibrate;
+        _canVibrate = canVibrate!;
         _loadData();
       });
     }
@@ -218,7 +218,7 @@ class _HomeState extends State<Home> {
     }
     GetStorage().write(kBeadsCount, _beadCounter);
     GetStorage().write(kRoundCount, _roundCounter);
-    int nextPage = _controller.page.round() + 1;
+    int nextPage = _controller.page!.round() + 1;
     _controller.animateToPage(nextPage,
         duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
   }
@@ -226,11 +226,11 @@ class _HomeState extends State<Home> {
 
 class _Counter extends StatelessWidget {
   const _Counter(
-      {Key key,
-      @required this.counter,
+      {required Key key,
+      required this.counter,
       this.tsCounter =
           const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-      @required this.counterName,
+      required this.counterName,
       this.tsCounterName = const TextStyle(
           fontSize: 20,
           fontStyle: FontStyle.italic,
@@ -305,7 +305,7 @@ void confirmReset(BuildContext context, VoidCallback callback) {
   );
 }
 
-void showSnackBar({BuildContext context, String label, IconData icon}) {
+void showSnackBar({required BuildContext context, required String label, required IconData icon}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       behavior: SnackBarBehavior.floating,
